@@ -54,12 +54,14 @@ public class CarregarDados {
         try{
             if (!(receita.exists()&&receita.isFile())){
                 System.out.println("Arquivo receita nao encontrado");
+                receita.getParentFile().mkdirs();
                 receita.createNewFile();
                 System.out.println("receitas.csv criado com sucesso");
                 criarCabecalho(receita);
             }
             if(!(despesa.exists()||despesa.isFile())){
                 System.out.println("Arquivo despesa nao encontrado");
+                despesa.getParentFile().mkdirs();
                 despesa.createNewFile();
                 System.out.println("despesas.csv criado com sucesso");
                 criarCabecalho(despesa);
