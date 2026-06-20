@@ -1,0 +1,33 @@
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Compiled files
+*.class
+*.jar
+*.war
+*.nar
+*.ear
+
+# NetBeans
+nbproject/
+.nb-gradle/
+build/
+dist/
+
+# Local environment
+.env
+.env.local
