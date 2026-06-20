@@ -24,7 +24,7 @@ public abstract class Lancamento {
     }
 
     public void setDescricao(String descricao) {
-        this.descricao = descricao;
+        this.descricao = descricao.trim();
     }
     
     public double getValor() {
@@ -44,6 +44,11 @@ public abstract class Lancamento {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Lancamento{" + "descricao=" + descricao + ", valor=" + valor + ", date=" + date + '}';
     }
     
     

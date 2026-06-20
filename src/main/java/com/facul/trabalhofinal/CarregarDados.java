@@ -27,7 +27,9 @@ public class CarregarDados {
     private ArrayList<Receita> receitas = new ArrayList<>();
     private ArrayList<Despesa> despesas = new ArrayList<>();
 
-    
+    // Carrega os dados do arquivo csv e da parse neles, poe tudo em objetos nessa arraylist receitas e despesas em arquivos separados
+    // um monte desse codigo é guardrail, garantindo que o arquivo existe e segue a formatacao esperada ( mais ou menos, falta deixar mais robusto )
+    //TODO deixar mais robusto
     public CarregarDados(){
         
         InputStreamReader sr = null;

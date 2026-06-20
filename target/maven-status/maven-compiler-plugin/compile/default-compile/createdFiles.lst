@@ -1,6 +1,7 @@
+com\facul\trabalhofinal\TrabalhoFinal.class
+com\facul\trabalhofinal\ParseLine.class
+com\facul\trabalhofinal\ControleDeLancamentos.class
 com\facul\trabalhofinal\CarregarDados.class
 com\facul\trabalhofinal\Receita.class
-com\facul\trabalhofinal\TrabalhoFinal.class
 com\facul\trabalhofinal\Despesa.class
 com\facul\trabalhofinal\Lancamento.class
-com\facul\trabalhofinal\ParseLine.class

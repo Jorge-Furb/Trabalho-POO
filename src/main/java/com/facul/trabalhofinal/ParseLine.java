@@ -12,6 +12,8 @@ import java.time.format.DateTimeParseException;
  * @author Admin
  * 
  */
+
+//Esse parse line transforma o texto que é pego no arquivo csv em dados uteis pro construtor dos Lancamentos
 public abstract class ParseLine {
     private static String[] lineSplit;
     public static String parseDescricao(String g){
@@ -20,7 +22,7 @@ public abstract class ParseLine {
             System.out.println("Parse error, retornando valor padrao");
             return "Sem descrição";
         }
-        return lineSplit[0];
+        return lineSplit[0].replace(";","");
     }
     public static String parseCategoria(String g){
          lineSplit = g.split(";",4);
@@ -28,12 +30,13 @@ public abstract class ParseLine {
             System.out.println("Parse error, retornando valor padrao");
             return "Sem categoria";
         }
-        return lineSplit[1];
+        
+        return lineSplit[1].replace(";","");
     }
     public static double parseValor(String g){
         lineSplit = g.split(";",4);
         try{
-        return Double.parseDouble(lineSplit[2]);
+        return Double.parseDouble(lineSplit[2].replace(";","").trim());
         }catch(NumberFormatException e){
             System.out.println("Parse error, retornando -1.0");
             return -1.0;
@@ -43,7 +46,7 @@ public abstract class ParseLine {
     public static LocalDate parseDate(String g){
         lineSplit = g.split(";",4);
         try{
-            return LocalDate.parse(lineSplit[3]);
+            return LocalDate.parse(lineSplit[3].replace(";","").trim());
         }catch(DateTimeParseException e){
             System.out.println("Parse error, retornando -1.0");
             return LocalDate.parse("0000-00-00");

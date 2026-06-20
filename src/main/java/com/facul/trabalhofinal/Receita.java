@@ -17,7 +17,15 @@ public class Receita extends Lancamento {
         super(descricao,valor, date);
         this.setCategoria(categoria);
     }
-
+    @Override
+    public void setDescricao(String s){
+        if(s==null||s.isBlank()){
+            super.setDescricao("Lancamento Receita");
+        }
+        else{
+            super.setDescricao(s);
+        }
+    }
     public String getCategoria() {
         return categoria;
     }
@@ -28,6 +36,9 @@ public class Receita extends Lancamento {
         }
         this.categoria = categoria;
     }
-    
+    @Override
+    public String toString() {
+        return "Despesa{" + "categoria=" + categoria + '}'+super.toString();
+    }
     
 }
