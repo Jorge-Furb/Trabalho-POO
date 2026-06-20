@@ -48,8 +48,8 @@ public abstract class ParseLine {
         try{
             return LocalDate.parse(lineSplit[3].replace(";","").trim());
         }catch(DateTimeParseException e){
-            System.out.println("Parse error, retornando -1.0");
-            return LocalDate.parse("0000-00-00");
+            System.out.println("Parse error, retornando data padrão");
+            return LocalDate.of(1900, 1, 1);
         }
     }
 }
