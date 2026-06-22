@@ -14,7 +14,7 @@ public class SanitizeFields {
         throw new UnsupportedOperationException("Impossivel criar objetos dessa classe");
     }
     
-    public String descricao(String s){
+    public static String descricao(String s){
         s=s.replace("\n", ". ");
         s=s.replace("\r", ". ");
         s=s.replace(";", "B===D"); // Voce sabia muito bem o que estava fazendo quando colocou isso na descricao...
@@ -24,7 +24,7 @@ public class SanitizeFields {
         
         return s.trim();
     }
-    public String categoria(String s){
+    public static String categoria(String s){
         s=s.replace("\n", ". ");
         s=s.replace("\r", ". ");
         s=s.replace(";", "B===D");
@@ -34,8 +34,8 @@ public class SanitizeFields {
        
         return s.trim();
     }
-    public double valor(double v){
-        v = Math.round(v*100)/100;
+    public static double valor(double v){
+        v = Math.round(v*100.0)/100.0;
         return v;
     }
     

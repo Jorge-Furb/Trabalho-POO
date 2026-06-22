@@ -1,11 +1,11 @@
 com\facul\trabalhofinal\TrabalhoFinal.class
-com\facul\trabalhofinal\SortFilters.class
-com\facul\trabalhofinal\ExclusionFilters.class
 com\facul\trabalhofinal\ParseLine.class
 com\facul\trabalhofinal\CarregarDados.class
+com\facul\trabalhofinal\Despesa.class
+com\facul\trabalhofinal\ControleDeDados.class
+com\facul\trabalhofinal\SortFilters.class
+com\facul\trabalhofinal\ExclusionFilters.class
 com\facul\trabalhofinal\Receita.class
 com\facul\trabalhofinal\SanitizeFields.class
-com\facul\trabalhofinal\Despesa.class
 com\facul\trabalhofinal\SalvarDados.class
-com\facul\trabalhofinal\ControleDeDados.class
 com\facul\trabalhofinal\Lancamento.class
