@@ -1,21 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
 package com.facul.trabalhofinal;
 
-/**
- *
- * @author Admin
- */
 public class TrabalhoFinal {
+
     public static void main(String[] args) {
-        CarregarDados c = new CarregarDados(); // Codigo comeca nessa classe
-        for(Despesa e : c.getDespesas()){ //Teste pra ver se os objetos estao sendo iniciados corretamente
-            System.out.println(e.toString());
+        CarregarDados c = new CarregarDados();
+        for (Receita r : c.getReceitas()) {
+            System.out.println(r.toString());
         }
-        for(String e : c.getCategoriasDespesas()){ //Teste pra ver se os objetos estao sendo iniciados corretamente
-            System.out.println(e.toString());
+        for (Despesa r : c.getDespesas()) {
+            System.out.println(r.toString());
         }
+        /*javax.swing.SwingUtilities.invokeLater(() -> {
+            CarregarDados dados = new CarregarDados();
+            new MainFrame(dados).setVisible(true);
+        });*/
     }
 }

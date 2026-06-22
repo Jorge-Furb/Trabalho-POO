@@ -21,7 +21,7 @@ public class SalvarDados {
             String linha;
   
             for (Despesa d : update.getDespesas()){
-                linha = d.getDescricao()+";"+d.getCategoria()+";"+String.valueOf(d.getValor())+";"+d.getDate().toString();
+                linha = d.getDescricao()+";"+d.getCategoria()+";"+String.valueOf(Math.abs(d.getValor()))+";"+d.getDate().toString();
                 bw.write(linha);
                 bw.newLine();
             }

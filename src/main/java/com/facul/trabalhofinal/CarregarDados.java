@@ -121,6 +121,7 @@ public class CarregarDados  {
             String line = br.readLine();
             while(line!=null){
               categoriasReceitas.add(line.trim().replace(";", ""));
+              line = br.readLine();
             }
             
         } catch (IOException ex) {
@@ -135,6 +136,7 @@ public class CarregarDados  {
             String line = br.readLine();
             while(line!=null){
               categoriasDespesas.add(line.trim().replace(";", ""));
+              line = br.readLine();
             }
             
         } catch (IOException ex) {

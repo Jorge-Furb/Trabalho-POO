@@ -34,6 +34,14 @@ public class ControleDeDados {
    }
    
    
+   public <T extends Lancamento> double balanco(ArrayList<T> lancamentos){
+       double total = 0.0;
+       for(T l:lancamentos){
+           total+=l.getValor();
+       }
+       return total;
+   }
+   
    public void adicionarCategoriaReceita(String s){
        for(String str : categoriasReceitas){
            if(s.equals(str)){
