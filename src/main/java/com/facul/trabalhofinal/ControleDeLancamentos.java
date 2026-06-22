@@ -40,7 +40,15 @@ public class ControleDeLancamentos {
        }
        despesas.add(d);
    }
-   
-   
-   
+
+    public ArrayList<Receita> getReceitas() {
+        return receitas;
+    }
+
+    public ArrayList<Despesa> getDespesas() {
+        return despesas;
+    }
+    
+    
+    
 }

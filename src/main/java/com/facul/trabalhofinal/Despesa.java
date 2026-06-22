@@ -29,7 +29,10 @@ public class Despesa extends Lancamento {
     public String getCategoria() {
         return categoria;
     }
-
+    @Override
+    public double getValor() {
+        return super.getValor()*-1;
+    }
     public void setCategoria(String categoria) {
         if(categoria==null||categoria.isBlank()){
             this.categoria="Outras despesas";

@@ -26,7 +26,7 @@ public abstract class ParseLine {
     }
     public static String parseCategoria(String g){
          lineSplit = g.split(";",4);
-        if(lineSplit[0]==null||lineSplit[0].isBlank()){
+        if(lineSplit[1]==null||lineSplit[1].isBlank()){
             System.out.println("Parse error, retornando valor padrao");
             return "Sem categoria";
         }
