@@ -21,7 +21,7 @@ import java.util.ArrayList;
  *
  * @author Admin
  */
-public class CarregarDados {
+public class CarregarDados  {
 
     private static final String DIR = "src\\main\\java\\com\\facul\\Dados\\";
     private ArrayList<Receita> receitas = new ArrayList<>();

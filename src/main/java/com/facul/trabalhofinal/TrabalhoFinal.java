@@ -14,5 +14,8 @@ public class TrabalhoFinal {
         for(Despesa e : c.getDespesas()){ //Teste pra ver se os objetos estao sendo iniciados corretamente
             System.out.println(e.toString());
         }
+        for(String e : c.getCategoriasDespesas()){ //Teste pra ver se os objetos estao sendo iniciados corretamente
+            System.out.println(e.toString());
+        }
     }
 }

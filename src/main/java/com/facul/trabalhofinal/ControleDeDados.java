@@ -13,21 +13,44 @@ import java.util.ArrayList;
 
 // Por hora adiciona novos Lancamentos
 // TODO - Salvar no arquivo, como vai ser feito eu vou descobrir quando tiver a interface grafica implementada
-public class ControleDeLancamentos {
+public class ControleDeDados {
    private ArrayList<Receita> receitas;
    private ArrayList<Despesa> despesas;
+   private ArrayList<String> categoriasReceitas;
+   private ArrayList<String> categoriasDespesas;
    
-   
-   public ControleDeLancamentos(CarregarDados d){
+   public ControleDeDados(CarregarDados d){
        this.receitas=d.getReceitas();
        this.despesas=d.getDespesas();
+       this.categoriasReceitas=d.getCategoriasReceitas();
+       this.categoriasDespesas=d.getCategoriasDespesas();
    }
-   public ControleDeLancamentos(){
+   public ControleDeDados(){
        CarregarDados d = new CarregarDados(); // Composicao só pelo meme
        this.receitas=d.getReceitas();
        this.despesas=d.getDespesas();
+       this.categoriasReceitas=d.getCategoriasReceitas();
+       this.categoriasDespesas=d.getCategoriasDespesas();
    }
    
+   
+   public void adicionarCategoriaReceita(String s){
+       for(String str : categoriasReceitas){
+           if(s.equals(str)){
+               throw new IllegalArgumentException("Categoria ja existe");
+           }
+       }
+       categoriasReceitas.add(s);
+   }
+   public void adicionarCategoriaDespesa(String s){
+       for(String str : categoriasDespesas){
+           if(s.equals(str)){
+               throw new IllegalArgumentException("Categoria ja existe");
+               
+           }
+       }
+       categoriasDespesas.add(s);
+   }
    public void adicionarLancamento(Receita r){
        if(r==null){
            throw new IllegalArgumentException("Erro, objeto vazio");
@@ -48,7 +71,15 @@ public class ControleDeLancamentos {
     public ArrayList<Despesa> getDespesas() {
         return despesas;
     }
+
+    public ArrayList<String> getCategoriasReceitas() {
+        return categoriasReceitas;
+    }
+
+    public ArrayList<String> getCategoriasDespesas() {
+        return categoriasDespesas;
+    }
     
-    
+   
     
 }
