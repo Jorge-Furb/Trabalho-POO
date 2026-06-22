@@ -22,7 +22,7 @@ public class SanitizeFields {
            s=s.substring(0, 60);
         }
         
-        return s;
+        return s.trim();
     }
     public String categoria(String s){
         s=s.replace("\n", ". ");
@@ -32,7 +32,7 @@ public class SanitizeFields {
            s=s.substring(0, 25);
         }
        
-        return s;
+        return s.trim();
     }
     public double valor(double v){
         v = Math.round(v*100)/100;
