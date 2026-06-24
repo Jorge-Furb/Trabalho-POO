@@ -10,9 +10,9 @@ public class TrabalhoFinal {
         for (Despesa r : c.getDespesas()) {
             System.out.println(r.toString());
         }
-        /*javax.swing.SwingUtilities.invokeLater(() -> {
+        javax.swing.SwingUtilities.invokeLater(() -> {
             CarregarDados dados = new CarregarDados();
             new MainFrame(dados).setVisible(true);
-        });*/
+        });
     }
 }

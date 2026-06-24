@@ -41,6 +41,9 @@ public final class ExclusionFilters {
         return filtered;
     }
     public static <T extends Lancamento> ArrayList<T> filterByDate(ArrayList<T> original, LocalDate inic, LocalDate fin){
+        if (inic.isAfter(fin)){
+            throw new IllegalArgumentException("Data inicial nao pode ser maior que data final");
+        }
         ArrayList<T> filtered = new ArrayList<>();
         for(T l : original){
             if((l.getDate().isAfter(inic)||l.getDate().isEqual(inic))&&(l.getDate().isBefore(fin)||l.getDate().isEqual(fin))){

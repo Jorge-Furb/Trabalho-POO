@@ -32,7 +32,7 @@ public class CarregarDados  {
     private File fileDespesas = new File(DIR+ "despesas.csv");
     private File fileCategoriasDespesas = new File(DIR+"categoriasDespesas.csv");
     private File fileCategoriasReceitas = new File(DIR+"categoriasReceitas.csv");
-    
+    private static final String cabecalho="Descrição;Categoria;Valor;Data";
     // Carrega os dados do arquivo csv e da parse neles, poe tudo em objetos nessa arraylist receitas e despesas em arquivos separados
     // um monte desse codigo é guardrail, garantindo que o arquivo existe e segue a formatacao esperada ( mais ou menos, falta deixar mais robusto )
     //TODO deixar mais robusto
@@ -170,6 +170,8 @@ public class CarregarDados  {
         }
         
     }
+
+    
     protected void carregaReceitas(InputStreamReader sr){
         
         
@@ -228,6 +230,8 @@ public class CarregarDados  {
         return fileCategoriasReceitas;
     }
 
-    
+    public static String getCabecalho() {
+        return cabecalho;
+    }
 
 }

@@ -19,7 +19,9 @@ public class SalvarDados {
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter(update.getFileDespesas()));
             String linha;
-  
+            linha = CarregarDados.getCabecalho();
+            bw.write(linha);
+            bw.newLine();
             for (Despesa d : update.getDespesas()){
                 linha = d.getDescricao()+";"+d.getCategoria()+";"+String.valueOf(Math.abs(d.getValor()))+";"+d.getDate().toString();
                 bw.write(linha);
@@ -27,6 +29,9 @@ public class SalvarDados {
             }
             bw.close();
             bw = new BufferedWriter(new FileWriter(update.getFileReceitas()));
+            linha = CarregarDados.getCabecalho();
+            bw.write(linha);
+            bw.newLine();
             for (Receita r : update.getReceitas()){
                 linha = r.getDescricao()+";"+r.getCategoria()+";"+String.valueOf(r.getValor())+";"+r.getDate().toString();
                 bw.write(linha);
@@ -34,13 +39,20 @@ public class SalvarDados {
             }
             bw.close();
             bw = new BufferedWriter(new FileWriter(update.getFileCategoriasDespesas()));
+            
             for(String d : update.getCategoriasDespesas()){
+                if(d.equals("Outras despesas")){
+                    continue;
+                }
                 bw.write(d);
                 bw.newLine();
             }
             bw.close();
             bw = new BufferedWriter(new FileWriter(update.getFileCategoriasReceitas()));
             for(String r : update.getCategoriasReceitas()){
+                if(r.equals("Outras receitas")){
+                    continue;
+                }
                 bw.write(r);
                 bw.newLine();
             }
