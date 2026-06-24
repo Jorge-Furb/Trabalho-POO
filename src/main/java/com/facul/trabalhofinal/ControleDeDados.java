@@ -43,8 +43,9 @@ public class ControleDeDados {
    }
    
    public void adicionarCategoriaReceita(String s){
+       
        for(String str : categoriasReceitas){
-           if(s.equals(str)){
+           if((s).equalsIgnoreCase(str)){
                throw new IllegalArgumentException("Categoria ja existe");
            }
        }
@@ -52,7 +53,7 @@ public class ControleDeDados {
    }
    public void adicionarCategoriaDespesa(String s){
        for(String str : categoriasDespesas){
-           if(s.equals(str)){
+           if(s.equalsIgnoreCase(str)){
                throw new IllegalArgumentException("Categoria ja existe");
                
            }

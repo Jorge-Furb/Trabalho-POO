@@ -7,7 +7,7 @@ import java.time.LocalDate;
  *
  * @author Admin
  */
-public abstract class Lancamento {
+public abstract class Lancamento implements Comparable<Lancamento> {
     private String descricao;
     private double valor;
     private LocalDate date;
@@ -51,6 +51,9 @@ public abstract class Lancamento {
         return "Lancamento{" + "descricao=" + descricao + ", valor=" + valor + ", date=" + date + '}';
     }
     
-    
+    @Override // LocalDate ja implementa Comparable para a nossa alegria
+    public int compareTo(Lancamento o) {
+        return this.date.compareTo(o.date);
+    }
     
 }

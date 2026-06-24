@@ -42,7 +42,7 @@ public class ParseLineTest {
 
     @Test
     public void testParseCategoriaVazio() {
-        String linha = ";Alimentação;50.00;2024-06-10";
+        String linha = "Feijao;;50.00;2024-06-10";
         String resultado = ParseLine.parseCategoria(linha);
         assertEquals("Sem categoria", resultado);
     }

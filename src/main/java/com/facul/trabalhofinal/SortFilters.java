@@ -5,6 +5,7 @@
 package com.facul.trabalhofinal;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 
 /**
@@ -18,7 +19,7 @@ public class SortFilters {
     
     public static <T extends Lancamento> ArrayList<T> sortByDate(ArrayList<T> original){
         ArrayList<T> sorted = new ArrayList<>(original);
-        sorted.sort(Comparator.comparing(Lancamento::getDate));
+        Collections.sort(sorted);
         return sorted;
     }
     
@@ -26,7 +27,7 @@ public class SortFilters {
         ArrayList<Lancamento> tudo = new ArrayList<>();
         tudo.addAll(d);
         tudo.addAll(r);
-        tudo.sort(Comparator.comparing(Lancamento::getDate));
+        Collections.sort(tudo);
         return tudo;
     }
     

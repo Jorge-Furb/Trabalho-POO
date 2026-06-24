@@ -72,11 +72,17 @@ public class CarregarDados  {
                 System.out.println("receitas.csv criado com sucesso");
                 criarCabecalho(receita);
             }
+            if(!hasCabecalho(receita)){
+                criarCabecalho(receita);
+            }
             if(!(despesa.exists()||despesa.isFile())){
                 System.out.println("Arquivo despesa nao encontrado");
                 despesa.getParentFile().mkdirs();
                 despesa.createNewFile();
                 System.out.println("despesas.csv criado com sucesso");
+                criarCabecalho(despesa);
+            }
+            if(!hasCabecalho(despesa)){
                 criarCabecalho(despesa);
             }
             if(!(categoriasDespesas.exists()&&categoriasDespesas.isFile())){
@@ -99,6 +105,21 @@ public class CarregarDados  {
                 
     }
         
+    }
+    private boolean hasCabecalho(File f){
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(f));
+            String line = br.readLine();
+            if(line!=null||line.equals(cabecalho)){
+                return true;
+            }
+            
+        } catch (FileNotFoundException ex) {
+             System.out.println("File not found on hasCabecalho");
+        }catch(IOException ex){
+              System.out.println("IOException on hasCabecalho");
+        }
+        return false;
     }
      private void criarCabecalho(File f){
          String cabecalho="Descrição;Categoria;Valor;Data";
