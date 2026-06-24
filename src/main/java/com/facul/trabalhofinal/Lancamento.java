@@ -5,7 +5,8 @@ import java.time.LocalDate;
 
 /**
  *
- * @author Admin
+ * @author Jorge
+ * @author Lucas
  */
 public abstract class Lancamento implements Comparable<Lancamento> {
     private String descricao;

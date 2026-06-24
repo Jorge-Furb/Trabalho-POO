@@ -9,8 +9,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- *
- * @author Admin
+ * Salva os dados da memoria do programa pro disco
+ * 
+ * @author Jorge
+ * @author Lucas
  */
 public class SalvarDados {
     

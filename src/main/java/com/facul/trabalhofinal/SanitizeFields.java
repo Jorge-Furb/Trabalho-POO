@@ -5,8 +5,10 @@
 package com.facul.trabalhofinal;
 
 /**
- *
- * @author Admin
+ * Filtra os dados de entrada do usuario para adequalos ao programa.
+ * 
+ * @author Jorge
+ * @author Lucas
  */
 public class SanitizeFields {
     

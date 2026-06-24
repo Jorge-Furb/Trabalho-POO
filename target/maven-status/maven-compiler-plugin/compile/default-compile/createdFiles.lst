@@ -9,6 +9,8 @@ com\facul\trabalhofinal\SaldoDialog.class
 com\facul\trabalhofinal\SalvarDados.class
 com\facul\trabalhofinal\Despesa.class
 com\facul\trabalhofinal\GUI\BannerPanel.class
+com\facul\trabalhofinal\LancamentoDialog$1.class
 com\facul\trabalhofinal\TipoLancamento.class
 com\facul\trabalhofinal\Receita.class
+com\facul\trabalhofinal\LancamentosPanel$2.class
 com\facul\trabalhofinal\Lancamento.class

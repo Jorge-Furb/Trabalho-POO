@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class SanitizeFieldsTest {
 
     @Test
-    void descricaoRemoveQuebrasPontoEVirgulaEAparaEspacos() {
+    void descricaoRemoveQuebrasPontoEVirgulaEAparaEspacosDoProfessorCuzaoTentandoQuebrarMeuPrograma() {
         String resultado = SanitizeFields.descricao("  Linha 1\nLinha;2\r  ");
 
         assertEquals("Linha 1. LinhaB===D2.", resultado);

@@ -20,16 +20,16 @@ import javax.swing.table.DefaultTableModel;
 public class LancamentosPanel extends JPanel {
 
     private final ControleDeDados controle;
-    private final boolean receita;
+    private final TipoLancamento tipo;
     private final DefaultTableModel modelo;
     private final JPanel painelCategorias;
     private final JSpinner dataInicio = new JSpinner(new SpinnerDateModel());
     private final JSpinner dataFim = new JSpinner(new SpinnerDateModel());
     private final JCheckBox usarFiltroData = new JCheckBox("Usar filtro de data");
 
-    public LancamentosPanel(ControleDeDados controle, boolean receita) {
+    public LancamentosPanel(ControleDeDados controle, TipoLancamento tipo) {
         this.controle = controle;
-        this.receita = receita;
+        this.tipo = tipo;
         this.modelo = new DefaultTableModel(new Object[]{"Descrição", "Categoria", "Valor", "Data"}, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -53,7 +53,7 @@ public class LancamentosPanel extends JPanel {
         JPanel painel = new JPanel(new BorderLayout());
         JPanel topo = new JPanel(new GridLayout(0, 1, 4, 4));
 
-        topo.add(new JLabel(receita ? "Receitas" : "Despesas"));
+        topo.add(new JLabel(tituloLista()));
         topo.add(usarFiltroData);
         topo.add(new JLabel("Data inicial:"));
         topo.add(dataInicio);
@@ -79,9 +79,32 @@ public class LancamentosPanel extends JPanel {
         return painel;
     }
 
+    private String tituloLista() {
+        switch (tipo) {
+            case RECEITA:
+                return "Receitas";
+            case DESPESA:
+                return "Despesas";
+            default:
+                throw new IllegalArgumentException("Tipo de lançamento inválido.");
+        }
+    }
+
     private void carregarCheckboxCategorias() {
         painelCategorias.removeAll();
-        ArrayList<String> categorias = receita ? controle.getCategoriasReceitas() : controle.getCategoriasDespesas();
+
+        ArrayList<String> categorias;
+        switch (tipo) {
+            case RECEITA:
+                categorias = controle.getCategoriasReceitas();
+                break;
+            case DESPESA:
+                categorias = controle.getCategoriasDespesas();
+                break;
+            default:
+                throw new IllegalArgumentException("Tipo de lançamento inválido.");
+        }
+
         for (String categoria : categorias) {
             JCheckBox check = new JCheckBox(categoria, true);
             painelCategorias.add(check);
@@ -102,34 +125,60 @@ public class LancamentosPanel extends JPanel {
         try {
             modelo.setRowCount(0);
 
-            if (receita) {
-                ArrayList<Receita> lista = SortFilters.sortByDate(controle.getReceitas());
-                lista = aplicarFiltros(lista);
-                for (Receita r : lista) {
-                    modelo.addRow(new Object[]{r.getDescricao(), r.getCategoria(), String.format("%.2f", r.getValor()), r.getDate()});
-                }
-                modelo.addRow(new Object[]{
-                    "TOTAL",
-                    "",
-                    String.format("%.2f", controle.balanco(lista)),
-                    ""
-                });
-            } else {
-                ArrayList<Despesa> lista = SortFilters.sortByDate(controle.getDespesas());
-                lista = aplicarFiltros(lista);
-                for (Despesa d : lista) {
-                    modelo.addRow(new Object[]{d.getDescricao(), d.getCategoria(), String.format("%.2f", d.getValor()), d.getDate()});
-                }
-                modelo.addRow(new Object[]{
-                    "TOTAL",
-                    "",
-                    String.format("%.2f", controle.balanco(lista)),
-                    ""
-                });
+            switch (tipo) {
+                case RECEITA:
+                    atualizarReceitas();
+                    break;
+                case DESPESA:
+                    atualizarDespesas();
+                    break;
+                default:
+                    throw new IllegalArgumentException("Tipo de lançamento inválido.");
             }
         } catch (IllegalArgumentException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
+    }
+
+    private void atualizarReceitas() {
+        ArrayList<Receita> lista = SortFilters.sortByDate(controle.getReceitas());
+        lista = aplicarFiltros(lista);
+
+        for (Receita r : lista) {
+            modelo.addRow(new Object[]{
+                r.getDescricao(),
+                r.getCategoria(),
+                String.format("%.2f", r.getValor()),
+                r.getDate()
+            });
+        }
+
+        adicionarLinhaTotal(controle.balanco(lista));
+    }
+
+    private void atualizarDespesas() {
+        ArrayList<Despesa> lista = SortFilters.sortByDate(controle.getDespesas());
+        lista = aplicarFiltros(lista);
+
+        for (Despesa d : lista) {
+            modelo.addRow(new Object[]{
+                d.getDescricao(),
+                d.getCategoria(),
+                String.format("%.2f", d.getValor()),
+                d.getDate()
+            });
+        }
+
+        adicionarLinhaTotal(controle.balanco(lista));
+    }
+
+    private void adicionarLinhaTotal(double total) {
+        modelo.addRow(new Object[]{
+            "TOTAL",
+            "",
+            String.format("%.2f", total),
+            ""
+        });
     }
 
     private <T extends Lancamento> ArrayList<T> aplicarFiltros(ArrayList<T> lista) {

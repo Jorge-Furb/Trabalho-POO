@@ -8,7 +8,8 @@ import java.time.LocalDate;
 
 /**
  *
- * @author Admin
+ * @author Jorge
+ * @author Lucas
  */
 public class Receita extends Lancamento {
     private String categoria;

@@ -18,8 +18,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
- *
- * @author Admin
+ * Essa classe verifica a integridade dos dados em disco e os carrega pra memoria
+ * @author Jorge
+ * @author Lucas
  */
 public class CarregarDados  {
 
@@ -63,7 +64,7 @@ public class CarregarDados  {
             }
         }
     }
-    protected void validateFiles(File receita, File despesa, File categoriasDespesas, File categoriasReceitas){
+    private void validateFiles(File receita, File despesa, File categoriasDespesas, File categoriasReceitas){
         try{
             if (!(receita.exists()&&receita.isFile())){
                 System.out.println("Arquivo receita nao encontrado");
@@ -135,7 +136,7 @@ public class CarregarDados  {
         }
          
      }
-      protected void carregaCategoriasReceitas(InputStreamReader sr){
+      private void carregaCategoriasReceitas(InputStreamReader sr){
       
         try ( BufferedReader br = new BufferedReader(sr)){
      
@@ -150,7 +151,7 @@ public class CarregarDados  {
             
         } 
      }
-     protected void carregaCategoriasDespesas(InputStreamReader sr){
+     private void carregaCategoriasDespesas(InputStreamReader sr){
        
         try(BufferedReader br = new BufferedReader(sr)) {
         
@@ -166,7 +167,7 @@ public class CarregarDados  {
         }  
      }
      
-     protected void carregaDespesas(InputStreamReader sr){
+     private void carregaDespesas(InputStreamReader sr){
         
        
         try( BufferedReader br = new BufferedReader(sr)) {
@@ -193,7 +194,7 @@ public class CarregarDados  {
     }
 
     
-    protected void carregaReceitas(InputStreamReader sr){
+    private void carregaReceitas(InputStreamReader sr){
         
         
         try(BufferedReader br = new BufferedReader(sr)) {

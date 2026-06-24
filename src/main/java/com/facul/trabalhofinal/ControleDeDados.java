@@ -7,12 +7,12 @@ package com.facul.trabalhofinal;
 import java.util.ArrayList;
 
 /**
- *
- * @author Admin
+ * Manipula e retorna dados das listas.
+ * 
+ * @author Jorge
+ * @author Lucas
  */
 
-// Por hora adiciona novos Lancamentos
-// TODO - Salvar no arquivo, como vai ser feito eu vou descobrir quando tiver a interface grafica implementada
 public class ControleDeDados {
    private ArrayList<Receita> receitas;
    private ArrayList<Despesa> despesas;
@@ -33,6 +33,13 @@ public class ControleDeDados {
        this.categoriasDespesas=d.getCategoriasDespesas();
    }
    
+   
+   /**
+    * 
+    * Retorna o balanco dos valores da lista de lancamentos
+    * @param lancamentos
+    * @return balanco
+    */
    
    public <T extends Lancamento> double balanco(ArrayList<T> lancamentos){
        double total = 0.0;

@@ -8,15 +8,23 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
- *
- * @author Admin
+ * Retorna listas de Lancamento filtradas
+ * @author Jorge
+ * @author Lucas
  */
 public final class ExclusionFilters {
 
     private ExclusionFilters() {
         throw new UnsupportedOperationException("Impossivel criar objetos dessa classe");
     }
-
+    /**
+     * Recebe uma lista de Lancamentos e outra de categorias e retorna apenas os Lancamentos que
+     * fazem parte de uma dessas categorias da lista
+     * 
+     * @param original
+     * @param categorias
+     * @return ArrayList<Lancamento> 
+     */
     public static <T extends Lancamento> ArrayList<T> filterByCategoria(ArrayList<T> original, ArrayList<String> categorias) {
 
         ArrayList<T> filtered = new ArrayList<>();
@@ -40,6 +48,15 @@ public final class ExclusionFilters {
         }
         return filtered;
     }
+    /**
+     * Recebe uma lista de Lancamentos e uma data de inicio e outra de final, filtra os Lancamentos dessas datas
+     * mais os Lancamentos entre as 2 datas
+     * 
+     * @param original
+     * @param inic
+     * @param fin
+     * @return 
+     */
     public static <T extends Lancamento> ArrayList<T> filterByDate(ArrayList<T> original, LocalDate inic, LocalDate fin){
         if (inic.isAfter(fin)){
             throw new IllegalArgumentException("Data inicial nao pode ser maior que data final");

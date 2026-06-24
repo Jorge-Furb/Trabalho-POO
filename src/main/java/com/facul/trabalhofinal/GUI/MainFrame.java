@@ -4,16 +4,12 @@ import com.facul.trabalhofinal.GUI.BannerPanel;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
 public class MainFrame extends JFrame {
 
@@ -32,7 +28,6 @@ public class MainFrame extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setLayout(new BorderLayout());
-        
 
         add(criarMenu(), BorderLayout.WEST);
         add(painelCentral, BorderLayout.CENTER);
@@ -76,8 +71,8 @@ public class MainFrame extends JFrame {
 
         btnAddReceita.addActionListener(e -> abrirLancamento(TipoLancamento.RECEITA));
         btnAddDespesa.addActionListener(e -> abrirLancamento(TipoLancamento.DESPESA));
-        btnListReceitas.addActionListener(e -> trocarPainel(new LancamentosPanel(controle, true)));
-        btnListDespesas.addActionListener(e -> trocarPainel(new LancamentosPanel(controle, false)));
+        btnListReceitas.addActionListener(e -> trocarPainel(new LancamentosPanel(controle, TipoLancamento.RECEITA)));
+        btnListDespesas.addActionListener(e -> trocarPainel(new LancamentosPanel(controle, TipoLancamento.DESPESA)));
         btnExtrato.addActionListener(e -> trocarPainel(new ExtratoPanel(controle)));
         btnSaldo.addActionListener(e -> new SaldoDialog(this, controle).setVisible(true));
         btnSalvar.addActionListener(e -> salvarDados());
@@ -106,8 +101,8 @@ public class MainFrame extends JFrame {
     }
 
     private void mostrarBoasVindas() {
-    trocarPainel(new BannerPanel());
-}
+        trocarPainel(new BannerPanel());
+    }
 
     private void trocarPainel(JPanel novoPainel) {
         painelCentral.removeAll();

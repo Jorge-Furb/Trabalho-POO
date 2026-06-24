@@ -8,8 +8,11 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
 /**
- *
- * @author Admin
+ * Usado durante o carregamento dos arquivos csv para separar os campos
+ * que vao ser usados para instanciar os objetos
+ * 
+ * @author Jorge
+ * @author Lucas
  * 
  */
 

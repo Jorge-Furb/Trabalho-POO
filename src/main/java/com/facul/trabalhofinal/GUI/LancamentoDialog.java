@@ -29,11 +29,7 @@ public class LancamentoDialog extends JDialog {
     private final JSpinner spinnerData = new JSpinner(new SpinnerDateModel());
 
     public LancamentoDialog(JFrame parent, ControleDeDados controle, TipoLancamento tipo) {
-        super(
-                parent,
-                tipo == TipoLancamento.RECEITA ? "Adicionar Receita" : "Adicionar Despesa",
-                true
-        );
+        super(parent, tituloJanela(tipo), true);
         this.controle = controle;
         this.tipo = tipo;
 
@@ -46,6 +42,17 @@ public class LancamentoDialog extends JDialog {
 
         add(criarFormulario(), BorderLayout.CENTER);
         add(criarBotoes(), BorderLayout.SOUTH);
+    }
+
+    private static String tituloJanela(TipoLancamento tipo) {
+        switch (tipo) {
+            case RECEITA:
+                return "Adicionar Receita";
+            case DESPESA:
+                return "Adicionar Despesa";
+            default:
+                throw new IllegalArgumentException("Tipo de lançamento inválido.");
+        }
     }
 
     private JPanel criarFormulario() {
@@ -115,10 +122,20 @@ public class LancamentoDialog extends JDialog {
 
     private void carregarCategorias() {
         comboCategoria.removeAllItems();
-        for (String categoria : tipo == TipoLancamento.RECEITA
-                ? controle.getCategoriasReceitas()
-                : controle.getCategoriasDespesas()) {
-            comboCategoria.addItem(categoria);
+
+        switch (tipo) {
+            case RECEITA:
+                for (String categoria : controle.getCategoriasReceitas()) {
+                    comboCategoria.addItem(categoria);
+                }
+                break;
+            case DESPESA:
+                for (String categoria : controle.getCategoriasDespesas()) {
+                    comboCategoria.addItem(categoria);
+                }
+                break;
+            default:
+                throw new IllegalArgumentException("Tipo de lançamento inválido.");
         }
     }
 
@@ -142,11 +159,17 @@ public class LancamentoDialog extends JDialog {
         }
 
         try {
-            if (tipo == TipoLancamento.RECEITA) {
-                controle.adicionarCategoriaReceita(nova);
-            } else {
-                controle.adicionarCategoriaDespesa(nova);
+            switch (tipo) {
+                case RECEITA:
+                    controle.adicionarCategoriaReceita(nova);
+                    break;
+                case DESPESA:
+                    controle.adicionarCategoriaDespesa(nova);
+                    break;
+                default:
+                    throw new IllegalArgumentException("Tipo de lançamento inválido.");
             }
+
             comboCategoria.addItem(nova);
             comboCategoria.setSelectedItem(nova);
         } catch (IllegalArgumentException ex) {
@@ -162,19 +185,22 @@ public class LancamentoDialog extends JDialog {
             LocalDate data = converterData((Date) spinnerData.getValue());
 
             if (descricao.isBlank()) {
-                descricao = tipo == TipoLancamento.RECEITA
-                        ? "Lancamento Receita"
-                        : "Lancamento Despesa";
+                descricao = descricaoPadrao();
             }
 
             if (valor <= 0) {
                 throw new IllegalArgumentException("Valor inválido");
             }
 
-            if (tipo == TipoLancamento.RECEITA) {
-                controle.adicionarLancamento(new Receita(descricao, categoria, valor, data));
-            } else {
-                controle.adicionarLancamento(new Despesa(descricao, categoria, valor, data));
+            switch (tipo) {
+                case RECEITA:
+                    controle.adicionarLancamento(new Receita(descricao, categoria, valor, data));
+                    break;
+                case DESPESA:
+                    controle.adicionarLancamento(new Despesa(descricao, categoria, valor, data));
+                    break;
+                default:
+                    throw new IllegalArgumentException("Tipo de lançamento inválido.");
             }
 
             dispose();
@@ -182,6 +208,17 @@ public class LancamentoDialog extends JDialog {
             JOptionPane.showMessageDialog(this, "Valor inválido. Digite um número válido.");
         } catch (IllegalArgumentException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }
+
+    private String descricaoPadrao() {
+        switch (tipo) {
+            case RECEITA:
+                return "Lancamento Receita";
+            case DESPESA:
+                return "Lancamento Despesa";
+            default:
+                throw new IllegalArgumentException("Tipo de lançamento inválido.");
         }
     }
 
