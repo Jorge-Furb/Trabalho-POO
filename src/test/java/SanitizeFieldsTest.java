@@ -24,7 +24,7 @@ public class SanitizeFieldsTest {
 
     @Test
     void valorArredondaParaDuasCasasDecimais() {
-        assertEquals(10.24, SanitizeFields.valor(10.235), 0.0001);
-        assertEquals(10.23, SanitizeFields.valor(10.234), 0.0001);
+        assertEquals(10.24, SanitizeFields.valor("10.235"));
+        assertEquals(10.23, SanitizeFields.valor(10.234));
     }
 }

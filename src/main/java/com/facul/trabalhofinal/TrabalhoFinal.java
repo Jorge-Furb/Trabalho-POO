@@ -1,5 +1,7 @@
 package com.facul.trabalhofinal;
 
+import com.facul.trabalhofinal.GUI.MainFrame;
+
 public class TrabalhoFinal {
 
     public static void main(String[] args) {

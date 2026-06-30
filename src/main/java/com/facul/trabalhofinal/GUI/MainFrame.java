@@ -1,15 +1,19 @@
-package com.facul.trabalhofinal;
+package com.facul.trabalhofinal.GUI;
 
-import com.facul.trabalhofinal.GUI.BannerPanel;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import com.facul.trabalhofinal.CarregarDados;
+import com.facul.trabalhofinal.ControleDeDados;
+import com.facul.trabalhofinal.SalvarDados;
 
 public class MainFrame extends JFrame {
 

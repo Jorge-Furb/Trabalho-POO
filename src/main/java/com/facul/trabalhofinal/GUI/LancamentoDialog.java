@@ -1,4 +1,5 @@
-package com.facul.trabalhofinal;
+package com.facul.trabalhofinal.GUI;
+
 
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
@@ -7,6 +8,7 @@ import java.awt.Insets;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -17,6 +19,11 @@ import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
+
+import com.facul.trabalhofinal.ControleDeDados;
+import com.facul.trabalhofinal.Despesa;
+import com.facul.trabalhofinal.Receita;
+import com.facul.trabalhofinal.SanitizeFields;
 
 public class LancamentoDialog extends JDialog {
 
@@ -181,7 +188,7 @@ public class LancamentoDialog extends JDialog {
         try {
             String descricao = SanitizeFields.descricao(txtDescricao.getText());
             String categoria = SanitizeFields.categoria((String) comboCategoria.getSelectedItem());
-            double valor = SanitizeFields.valor(Double.parseDouble(txtValor.getText().replace(',', '.')));
+            double valor = SanitizeFields.valor(txtValor.getText());
             LocalDate data = converterData((Date) spinnerData.getValue());
 
             if (descricao.isBlank()) {

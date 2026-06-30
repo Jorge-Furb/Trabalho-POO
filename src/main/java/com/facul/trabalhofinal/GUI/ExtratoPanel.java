@@ -1,12 +1,19 @@
-package com.facul.trabalhofinal;
-
+package com.facul.trabalhofinal.GUI;
 import java.awt.BorderLayout;
 import java.time.YearMonth;
 import java.util.ArrayList;
+
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import com.facul.trabalhofinal.ControleDeDados;
+import com.facul.trabalhofinal.Despesa;
+import com.facul.trabalhofinal.Lancamento;
+import com.facul.trabalhofinal.Receita;
+import com.facul.trabalhofinal.SanitizeFields;
+import com.facul.trabalhofinal.SortFilters;
 
 public class ExtratoPanel extends JPanel {
 

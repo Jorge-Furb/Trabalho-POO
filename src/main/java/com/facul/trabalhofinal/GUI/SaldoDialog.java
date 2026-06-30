@@ -1,4 +1,4 @@
-package com.facul.trabalhofinal;
+package com.facul.trabalhofinal.GUI;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
+
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -16,6 +17,12 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
+
+import com.facul.trabalhofinal.ControleDeDados;
+import com.facul.trabalhofinal.ExclusionFilters;
+import com.facul.trabalhofinal.Lancamento;
+import com.facul.trabalhofinal.SanitizeFields;
+import com.facul.trabalhofinal.SortFilters;
 
 public class SaldoDialog extends JDialog {
 

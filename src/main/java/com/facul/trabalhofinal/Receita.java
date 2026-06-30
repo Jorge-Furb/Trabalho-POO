@@ -39,7 +39,7 @@ public class Receita extends Lancamento {
     }
     @Override
     public String toString() {
-        return "Despesa{" + "categoria=" + categoria + '}'+super.toString();
+        return "Receita{" + "categoria=" + categoria + '}'+super.toString();
     }
     
 }

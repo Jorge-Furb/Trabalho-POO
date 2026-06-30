@@ -1,0 +1,2 @@
+Roda os JUnit, rode o programa e faça o que seu coração mandar, o programa nao espera que os arquivos csv estejam corrompidos ( com dados que nao facam sentido ) se isso ocorrer, delete a pasta dados e seja feliz.
+A principio não é pra ocorrer a corrupcao dos csv usando o programa apenas, mas eu gostaria de ver voce tentar.

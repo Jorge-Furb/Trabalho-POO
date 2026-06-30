@@ -37,8 +37,14 @@ public class SanitizeFields {
         return s.trim();
     }
     public static double valor(double v){
-        v = Math.round(v*100.0)/100.0;
-        return v;
+     
+         return Math.round(v * 100.0) / 100.0;
+    }
+    public static double valor(String s){
+        s = s.replace(',','.');
+        double v = Double.parseDouble(s);
+        
+         return Math.round(v * 100.0) / 100.0;
     }
     
     
